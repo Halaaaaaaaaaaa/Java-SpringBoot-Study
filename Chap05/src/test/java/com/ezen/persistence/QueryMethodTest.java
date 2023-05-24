@@ -1,0 +1,77 @@
+package com.ezen.persistence;
+
+import java.util.Date;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ezen.domain.Board;
+
+@SpringBootTest
+public class QueryMethodTest {
+
+	@Autowired
+	private BoardRepository boardRepo;
+	
+	//각 테스트 케이스 실행 전 반드시 수행
+	//@BeforeEach
+	public void dataPrepare() {
+		System.out.println("===> dataPrepare() list data");
+		
+		for(int i=1; i<=200; i++) {
+			Board board = new Board();
+			
+			board.setTitle("1st 게시글" + i);
+			board.setWriter("작성자");
+			board.setContent("게시글 내용" + i);
+			board.setCreateDate(new Date());
+			board.setCnt(0);
+			
+			boardRepo.save(board);
+		}
+	}
+	
+	@Test //제목을 조건으로 게시글 목록 조회
+	@Disabled
+	public void testFindByTitle() {
+		System.out.println("===> testFindByTitle() list data");
+		
+		List<Board> boardList = boardRepo.findByTitle("네코펀치");
+		
+		System.out.println(">>> 조회 결과");
+		for(Board board : boardList) {
+			System.out.println(board.toString());
+		}
+	}
+	
+	@Test //내용을 조건으로 게시글 목록 조회
+	@Disabled
+	public void testByContentContaining() {
+		System.out.println("===> testByContentContaining() list data");
+		
+		List<Board> boardList = boardRepo.findByContentContaining("게시글 내용");
+		
+		System.out.println(">>> 조회 결과");
+		for(Board board : boardList) {
+			System.out.println(board.toString());
+		}
+	}
+	
+	@Test //제목과 내용을 조건으로 게시글 목록 조회
+	public void testByTitleContainingOrContentContaining() {
+		System.out.println("===> testByTitleContainingOrContentContaining() list data");
+		
+		List<Board> boardList = boardRepo.findByTitleContainingOrContentContaining("4", "13");
+		
+		System.out.println(">>> 조회 결과");
+		for(Board board : boardList) {
+			System.out.println(board.toString());
+		}
+	}
+	
+	
+}

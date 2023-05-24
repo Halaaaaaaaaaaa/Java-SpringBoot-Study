@@ -1,0 +1,19 @@
+package com.ezen.persistence;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ezen.domain.Board;
+
+public interface BoardRepository extends JpaRepository<Board, Long> {
+	
+	// 제목을 조건으로 게시글 목록 조회 - keyword 등록 
+	List<Board> findByTitle(String keyword);
+	
+	// 내용을 조건으로 게시글 목록 조회 - keyword를 like 조건으로 조회 
+	List<Board> findByContentContaing(String keyword);
+		
+	
+	
+}

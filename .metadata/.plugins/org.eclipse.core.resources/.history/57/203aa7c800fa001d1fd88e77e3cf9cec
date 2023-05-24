@@ -1,0 +1,22 @@
+package com.ezen;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Chap05Application {
+
+	public static void main(String[] args) {
+		//WEB application 형식으로 실행
+		//SpringApplication.run(Chap05Application.class, args); 
+		
+		//JAVA application 형식으로 실행
+		SpringApplication application = new SpringApplication(Chap05Application.class);
+		
+		application.setWebApplicationType(WebApplicationType.NONE);
+		
+		application.run(args)
+	}
+
+}

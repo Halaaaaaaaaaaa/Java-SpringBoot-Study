@@ -1,0 +1,43 @@
+package com.ezen.persistence;
+
+import java.util.Date;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ezen.domain.Board;
+
+@SpringBootTest
+public class QueryMethodTest {
+
+	@Autowired
+	private BoardRepository boardRepo;
+	
+	//각 테스트 케이스 실행 전 반드시 수행
+	@BeforeEach
+	public void dataPrepare() {
+		System.out.println("===> dataPrepare() list data");
+		
+		for(int i=1; i<=200; i++) {
+			Board board = new Board();
+			
+			board.setTitle("네코펀치" + i);
+			board.setWriter("냥냥");
+			board.setContent("집갈래..." + i);
+			board.setCreateDate(new Date());
+			board.setCnt(0);
+			
+			boardRepo.save(board);
+		}
+	}
+	
+	@Test
+	public void testFindByTitle() {
+		System.out.println("===> testFindByTitle() list data");
+		
+		List<Board> boardList = boardRepo.findByTitle("네코펀치 1");
+	}
+	
+}

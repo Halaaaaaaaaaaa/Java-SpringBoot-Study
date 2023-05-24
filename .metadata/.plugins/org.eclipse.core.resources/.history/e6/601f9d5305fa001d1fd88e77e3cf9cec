@@ -1,0 +1,32 @@
+package com.ezen.persistence;
+
+import java.util.Date;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ezen.domain.Board;
+
+@SpringBootTest
+public class BoardRepositoryTest {
+
+	@Autowired
+	public BoardRepository boardRepo;
+	
+	//데이터 insert
+	@Test
+	public void testInsertBoard() {
+		System.out.println("===> testInsertBoard() insert");
+		
+		Board board = new Board();
+		
+		board.setTitle("1st 게시글");
+		board.setWriter("작성자");
+		board.setContent("게시글 내용");
+		board.setCreateDate(new Date());
+		board.setCnt(0);
+	}
+	
+	
+}

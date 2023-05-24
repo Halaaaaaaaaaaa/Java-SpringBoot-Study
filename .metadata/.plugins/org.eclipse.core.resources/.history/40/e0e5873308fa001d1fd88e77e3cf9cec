@@ -1,0 +1,46 @@
+package com.ezen.persistence;
+
+import java.util.Date;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ezen.domain.Board;
+
+@SpringBootTest
+public class BoardRepositoryTest {
+
+	@Autowired
+	public BoardRepository boardRepo;
+	
+	//데이터 insert
+	@Test
+	@Disabled
+	public void testInsertBoard() {
+		System.out.println("===> testInsertBoard() insert");
+		
+		Board board = new Board();
+		
+		board.setTitle("네코펀치");
+		board.setWriter("냥냥");
+		board.setContent("집갈래...");
+		board.setCreateDate(new Date());
+		board.setCnt(0);
+		
+		boardRepo.save(board);
+	}
+	
+	//데이터 조회
+	@Test
+	@Disabled
+	public void testGetBoard() {
+		System.out.println("===> testGetBoard()");
+		
+		Board board = boardRepo.findById(3L).get();
+		
+		System.out.println(board.toString());
+	}
+	
+}

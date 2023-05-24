@@ -1,0 +1,15 @@
+package com.ezen.persistence;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class QueryMethodTest {
+
+	@Autowired
+	private BoardRepository boardRepo;
+	
+	//각 테스트 케이스 실행 전 반드시 수행
+	@BeforeEach
+	
+}

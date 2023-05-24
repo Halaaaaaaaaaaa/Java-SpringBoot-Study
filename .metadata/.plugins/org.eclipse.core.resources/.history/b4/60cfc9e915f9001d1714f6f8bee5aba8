@@ -1,0 +1,9 @@
+package com.ezen.example;
+
+public class OtherController {
+	
+	public OtherController() {
+		System.out.println("===> OtherController 생성");
+	}
+
+}
