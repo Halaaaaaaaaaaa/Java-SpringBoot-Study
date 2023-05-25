@@ -29,7 +29,7 @@ public class QueryMethodTest {
 			Board board = new Board();
 			
 			board.setTitle("위글위글" + i);
-			board.setWriter("망공");
+			//board.setWriter("망공");
 			board.setContent("온도니 씰룩" + i);
 			board.setCreateDate(new Date());
 			board.setCnt(0);

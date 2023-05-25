@@ -20,16 +20,17 @@ public class JPAClient {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		
-		 // 데이터 insert 
+		/*
+		// 데이터 insert 
 		try {
 			tx.begin();
 			
 			Board board = new Board();
 			
 			//board.setSeq(1);
-			board.setTitle("야옹이 발바닥");
-			board.setWriter("동글이");
-			board.setContent("조물조물");
+			board.setTitle("춘배찡 울지마");
+			board.setWriter("바보야");
+			board.setContent("난 정말 괜차나");
 			board.setCreateDate(new Date());
 			board.setCnt(0);
 			
@@ -39,15 +40,15 @@ public class JPAClient {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
-//			em.close();
-//			emf.close();
+			em.close();
+			emf.close();
 		}
 		
-		/*
+		
 		//게시글 조회
 		try {
-			Board board = em.find(Board.class, 1);
-			System.out.println("===>" + board);
+			Board board = em.find(Board.class, 3);
+			System.out.println("===> " + board);
 		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
@@ -55,6 +56,7 @@ public class JPAClient {
 			em.close();
 			emf.close();
 		}
+		
 		
 		//게시글 수정
 		try{
@@ -69,10 +71,11 @@ public class JPAClient {
 			e.printStackTrace();
 			//tx.rollback();
 		} finally {
-//			em.close();
-//			emf.close();
+			em.close();
+			emf.close();
 		}
-			
+		*/
+		
 		//글 목록 조회
 		try {
 			String jpql = "SELECT b FROM Board b ORDER BY b.seq DESC"; //객체를 통해 조회(일반 sql문은 테이블을 통해 조회)
@@ -89,6 +92,7 @@ public class JPAClient {
 			emf.close();
 		}
 		
+		/*
 		//게시글 삭제
 		try {
 			tx.begin();
