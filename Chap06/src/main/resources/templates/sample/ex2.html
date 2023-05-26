@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!--/* 반복문 처리 => th:each="변수:${목록}" */-->
+	<!--/* 태그 없이 문법 작성하여 텍스트 그대로 출력 시 대괄호2개 사용 
+	<ul>
+		<li th:each="dto : ${list}">
+			[[${dto}]]
+		</li>
+	</ul>
+	*/-->
+	 
+	<!--/* 반복문 상태 변수(state 혹은 count) 사용  
+	<ul>
+		<li th:each="item, count : ${list}">
+			[[${count.index}]] -- [[${item}]]
+		</li>
+	</ul>
+	 */-->
+	
+	<!--/* 제어문: th:if
+	<ul>
+		<li th:each="item : ${list}" th:if="${item.sno % 5 == 0}">
+			[[${item}]]
+		</li>
+	</ul>
+	 */-->
+	
+	<!-- 제어문: th:unless('지정된 조건이 아닐 경우'의 의미 -->
+	<ul>
+		<li th:each="item : ${list}">
+			<span th:if="${item.sno % 3 == 0}" th:text="${'------------'}"></span>
+			<span th:unless="${item.sno % 3 == 0}" th:text="${item.first}"></span>
+		</li>
+	</ul>
+	 
+</body>
+</html>
